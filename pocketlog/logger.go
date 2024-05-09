@@ -17,7 +17,7 @@ func (l *Logger) Debugf(format string, args ...any) {
 	// to impl
 }
 
-// Infof formats and prints a message if the log level is info or higher
+// Infof formats and prints a message if the log level is info or higher.
 func (l *Logger) Infof(format string, args ...any) {
 	// to impl
 }

@@ -12,6 +12,7 @@ type Logger struct {
 }
 
 // New returns you a logger, ready to log at the required threshold.
+// The defaul output is Stdout.
 func New(threshold Level, output io.Writer) *Logger {
 	return &Logger{
 		threshold: threshold,

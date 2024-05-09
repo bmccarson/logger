@@ -38,6 +38,7 @@ func (l *Logger) Infof(format string, args ...any) {
 	// to impl
 }
 
+// logf prints the message to the output.
 func (l *Logger) logf(format string, args ...any) {
 	_, _ = fmt.Fprintf(l.output, format+"\n", args...)
 }

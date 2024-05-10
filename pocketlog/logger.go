@@ -35,7 +35,14 @@ func (l *Logger) Debugf(format string, args ...any) {
 
 // Infof formats and prints a message if the log level is info or higher.
 func (l *Logger) Infof(format string, args ...any) {
-	// to impl
+	if l.output == nil {
+		l.output = os.Stdout
+	}
+	if l.threshold > LevelInfo {
+		return
+	}
+
+	l.logf(format, args...)
 }
 
 // logf prints the message to the output.

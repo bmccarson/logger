@@ -45,6 +45,18 @@ func (l *Logger) Infof(format string, args ...any) {
 	l.logf(format, args...)
 }
 
+// Errorf formats and prints a message if the log level is error or higher.
+func (l *Logger) Errorf(format string, args ...any) {
+	if l.output == nil {
+		l.output = os.Stdout
+	}
+	if l.threshold > LevelError {
+		return
+	}
+
+	l.logf(format, args...)
+}
+
 // logf prints the message to the output.
 func (l *Logger) logf(format string, args ...any) {
 	_, _ = fmt.Fprintf(l.output, format+"\n", args...)

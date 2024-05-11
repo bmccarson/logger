@@ -26,7 +26,6 @@ func New(threshold Level, opts ...Option) *Logger {
 
 // Debugf formats and prints a message if the log level is debug or higher.
 func (l *Logger) Debugf(format string, args ...any) {
-	l.defaultOut()
 	if l.threshold > LevelDebug {
 		return
 	}
@@ -36,7 +35,6 @@ func (l *Logger) Debugf(format string, args ...any) {
 
 // Infof formats and prints a message if the log level is info or higher.
 func (l *Logger) Infof(format string, args ...any) {
-	l.defaultOut()
 	if l.threshold > LevelInfo {
 		return
 	}
@@ -46,7 +44,6 @@ func (l *Logger) Infof(format string, args ...any) {
 
 // Errorf formats and prints a message if the log level is error or higher.
 func (l *Logger) Errorf(format string, args ...any) {
-	l.defaultOut()
 	if l.threshold > LevelError {
 		return
 	}
@@ -57,11 +54,4 @@ func (l *Logger) Errorf(format string, args ...any) {
 // logf prints the message to the output.
 func (l *Logger) logf(format string, args ...any) {
 	_, _ = fmt.Fprintf(l.output, format+"\n", args...)
-}
-
-// defaultOut sets the output to Stdout, if output is nil.
-func (l *Logger) defaultOut() {
-	if l.output == nil {
-		l.output = os.Stdout
-	}
 }
